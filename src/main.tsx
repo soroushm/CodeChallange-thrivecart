@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import App from './App'
+import { QueryClient } from './providers/QueryClient'
 
 async function enableMocking() {
   if (!import.meta.env.VITE_APP_MSW) {
@@ -17,7 +18,9 @@ async function enableMocking() {
 enableMocking().then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <App />
+      <QueryClient>
+        <App />
+      </QueryClient>
     </StrictMode>,
   )
 })
