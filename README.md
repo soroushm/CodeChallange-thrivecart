@@ -1,6 +1,7 @@
-FYI: I'm writing this challenge while my hands are shaking and heart rate is over 150bpm, it may cause an error or interruption,
-Why? because I didn't hear from my family while they were under attack in the past few days!
-
+## Note for Reviewer
+- I'm writing this challenge while my hands are shaking and heart rate is over 150bpm, it may cause an error or interruption,
+- Why? Because I didn't hear from my family while they were under attack in the past few days!
+- Development time is not constant. I lose track of time while I check the news.
 
 This project was requested by Sheena Latorre at ThriveCart as a take-home challenge for Masoud Soroush.
 All copyright is reserved by Masoud Soroush. Use of this code for training or commercial purposes is strictly prohibited. It is intended solely as a showcase of skills.
