@@ -22,4 +22,5 @@ Following [requested document](./docs/Homework_Project_FE.pdf) its basic E-comme
 # Stack
 - React
 - Vite Compiler 
-- pnpm 
+- package manager npm 
+- 
