@@ -22,4 +22,118 @@ Following [requested document](./docs/Homework_Project_FE.pdf) its basic E-comme
 - React
 - Vite Compiler
 - package manager npm
--
+- MSW
+- TanStack query
+
+# Apis
+
+#### Products
+
+Get `/api/{version}/{lang}/{currency}/products`
+
+```JSON
+[
+  {
+    "id": "[uuid]",
+    "SKU" : "[Stock Keeping Unit]",
+    "name": "[Product Name]",
+    "description": "[Product description]",
+    "price": 3295, // Price is in Cents
+    "quantity": 10,
+    "active": true,
+    "category": '[name]',
+    "availableQTY": 100
+  }
+]
+
+```
+
+### Campaigns
+
+Get /api/{version}/campaigns
+
+```JSON
+[
+  {
+    "id": '[uuid]',
+    "code": '[campaign code]',
+    "name": '[campaign name]',
+    "description": "string",
+    "applyTo": "[SKU | category]",
+    "target": "[SKU CODE | category name]",
+    "opertation": 'b1g2',
+    //preset operation code
+    "type": 'discount',
+    "value": 1,
+  }
+]
+```
+
+### Delivery options
+
+Get /api/{version}/delivery
+
+```JSON
+[
+{
+"id": "[uuid]",
+"code": 0, // delivery method code 0 Pickup, 1 Dhl, etc
+"name": "[delivery name]",
+"conditions": [{
+    "code": '[string]',
+    "target": "totalPrice",
+    "operation": ">",
+    "value": 5000,
+    "cost": 495
+}, {
+  "code": '[string]',
+    "target": "totalPrice",
+    "operation": ">",
+    "value": 9000,
+    "cost": 295
+}, {
+  "code": '[string]',
+    "target": "totalPrice",
+    "operation": "<=",
+    "value": 9000,
+    "cost": 0
+}]
+}
+]
+```
+
+### Delivery options
+
+post /api/{version}/order
+
+```JSON
+{
+  "orderDate": "isoTimeStamp",
+  "products": [
+    {
+      "SKU": "[code]",
+      "qty": 2,
+      "discount": "[number]",
+      "price": "[number]",
+      "total": "[number]",
+      "campaign": "[code]"
+    }
+  ],
+  "delivery": {
+    "code": "",
+    "conditionCode": "",
+    "cost": ""
+  }
+}
+
+
+```
+
+return
+
+```JSON
+{
+  "referenceId": "string",
+  "status": 'received | failed'
+}
+```
