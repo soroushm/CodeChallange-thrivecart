@@ -1,0 +1,19 @@
+.catalogue-wrapper {
+  .products-wrapper {
+    display: grid;
+    gap: var(--spacing);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .products-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .products-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

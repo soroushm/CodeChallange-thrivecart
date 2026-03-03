@@ -1,0 +1,64 @@
+.product {
+  padding: calc(var(--spacing) * 2);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  justify-content: space-between;
+
+  &.card {
+    background-color: var(--color-card);
+    position: relative;
+
+    .sku {
+      position: absolute;
+      top: calc(var(--spacing) * 3);
+      right: calc(var(--spacing) * 3);
+      background-color: var(--color-card);
+      padding: calc(var(--spacing) / 2) var(--spacing);
+      border-radius: var(--border-radius-sm);
+      font-size: 12px;
+    }
+  }
+
+  .product-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-md);
+    aspect-ratio: 3 / 2;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+  }
+
+  .title {
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .description {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+  }
+  .campaigns {
+    background-color: var(--color-badge-bg);
+    color: var(--color-badge-text);
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    text-align: center;
+    border-radius: var(--border-radius-sm);
+
+    img {
+      padding-right: calc(var(--spacing) / 2);
+    }
+  }
+}

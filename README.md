@@ -35,10 +35,12 @@ Get `/api/{version}/{lang}/{currency}/products`
 [
   {
     "id": "[uuid]",
-    "SKU" : "[Stock Keeping Unit]",
+    "SKU": "[Stock Keeping Unit]",
     "name": "[Product Name]",
+    "img": "[Product image]",
     "description": "[Product description]",
-    "price": 3295, // Price is in Cents
+    "price": 3295,
+    // Price is in Cents
     "quantity": 10,
     "active": true,
     "category": '[name]',
