@@ -6,7 +6,7 @@ export function ProductsList() {
   return (
     <div className="products-wrapper">
       {data?.products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} productCurrency={data.currency} />
       ))}
     </div>
   )

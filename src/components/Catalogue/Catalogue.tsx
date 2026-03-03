@@ -1,6 +1,6 @@
 import './catalogue.css'
-import { products } from '../../mocks/fixtures'
-import { ProductCard } from '../Product'
+import { Suspense } from 'react'
+import { ProductsList } from '../Product'
 export function Catalogue() {
   return (
     <main className="catalogue-wrapper">
@@ -8,11 +8,9 @@ export function Catalogue() {
         <h1>Catalogue</h1>
         <p>Select widgets to add to your current sales order.</p>
       </hgroup>
-      <div className="products-wrapper">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      <Suspense fallback={<div>Loading products...</div>}>
+        <ProductsList />
+      </Suspense>
     </main>
   )
 }
