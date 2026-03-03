@@ -12,8 +12,6 @@ Following [requested document](./docs/Homework_Project_FE.pdf) its basic E-comme
 ## Assumption
 
 - I assume it as like any other production application received product via HTTP request, without a hardcoded value for this reason I use MSW to mock Api
-- Currency: A multi-currency support is nice to have, so I will ask backend to give the right currency
-- Language: multi-language is a must to have feature, so a static text is translated in the Front-end and the product name will translate in the back-end
 - Payment: Since payment isn't mentioned in request, I'll assume it's not in the scope of the challenge and will ask for a direct bank transform method
 - Price: Since JS is like most Programing language have a hassle with decimal product price will be in cents to avoid miss calculation
 
@@ -40,10 +38,9 @@ Get `/api/{version}/{lang}/{currency}/products`
     "img": "[Product image]",
     "description": "[Product description]",
     "price": 3295,
-    // Price is in Cents
     "quantity": 10,
     "active": true,
-    "category": '[name]',
+    "category": "[name]",
     "availableQTY": 100
   }
 ]
@@ -57,16 +54,15 @@ Get /api/{version}/campaigns
 ```JSON
 [
   {
-    "id": '[uuid]',
-    "code": '[campaign code]',
-    "name": '[campaign name]',
+    "id": "[uuid]",
+    "code": "[campaign code]",
+    "name": "[campaign name]",
     "description": "string",
     "applyTo": "[SKU | category]",
     "target": "[SKU CODE | category name]",
-    "opertation": 'b1g2',
-    //preset operation code
-    "type": 'discount',
-    "value": 1,
+    "operation": "B1G2",
+    "type": "discount",
+    "value": 50
   }
 ]
 ```
@@ -79,22 +75,22 @@ Get /api/{version}/delivery
 [
 {
 "id": "[uuid]",
-"code": 0, // delivery method code 0 Pickup, 1 Dhl, etc
+"code": 0,
 "name": "[delivery name]",
 "conditions": [{
-    "code": '[string]',
+    "code": "U50",
     "target": "totalPrice",
     "operation": ">",
     "value": 5000,
     "cost": 495
 }, {
-  "code": '[string]',
+  "code": "U90",
     "target": "totalPrice",
     "operation": ">",
     "value": 9000,
     "cost": 295
 }, {
-  "code": '[string]',
+  "code": "M90",
     "target": "totalPrice",
     "operation": "<=",
     "value": 9000,
@@ -104,7 +100,7 @@ Get /api/{version}/delivery
 ]
 ```
 
-### Delivery options
+### Submit Order
 
 post /api/{version}/order
 
@@ -136,6 +132,6 @@ return
 ```JSON
 {
   "referenceId": "string",
-  "status": 'received | failed'
+  "status": "received | failed"
 }
 ```
