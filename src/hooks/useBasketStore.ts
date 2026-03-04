@@ -14,9 +14,9 @@ interface Item {
 interface BasketStore {
   items: Item[]
   add: (product: { id: ProductId; SKU: SKU }, quantity?: QTY) => void
-  remove: (productId: ProductId) => void
-  increaseQTY: (productId: ProductId, quantity?: QTY) => void
-  decreaseQTY: (productId: ProductId, quantity?: QTY) => void
+  remove: (SKU: SKU) => void
+  increaseQTY: (SKU: SKU, quantity?: QTY) => void
+  decreaseQTY: (SKU: SKU, quantity?: QTY) => void
   clear: () => void
 }
 
@@ -24,12 +24,12 @@ export const useBasketStore = create<BasketStore>((set) => ({
   items: [],
   add: (product, quantity = 1) => {
     set((state) => {
-      const existing = state.items.find((item) => item.productId === product.id)
+      const existing = state.items.find((item) => item.SKU === product.SKU)
 
       if (existing) {
         return {
           items: state.items.map((i) =>
-            i.productId === product.id ? { ...i, quantity: i.quantity + quantity } : i,
+            i.SKU === product.SKU ? { ...i, quantity: i.quantity + quantity } : i,
           ),
         }
       }
@@ -37,24 +37,22 @@ export const useBasketStore = create<BasketStore>((set) => ({
       return { items: [...state.items, { SKU: product.SKU, productId: product.id, quantity }] }
     })
   },
-  remove: (productId: string) => {
+  remove: (SKU) => {
     set((state) => ({
-      items: state.items.filter((item) => item.productId !== productId),
+      items: state.items.filter((item) => item.SKU !== SKU),
     }))
   },
-  increaseQTY: (productId, quantity = 1) => {
+  increaseQTY: (SKU, quantity = 1) => {
     set((state) => ({
       items: state.items.map((item) =>
-        item.productId === productId ? { ...item, quantity: item.quantity + quantity } : item,
+        item.SKU === SKU ? { ...item, quantity: item.quantity + quantity } : item,
       ),
     }))
   },
-  decreaseQTY: (productId, quantity = 1) =>
+  decreaseQTY: (SKU, quantity = 1) =>
     set((state) => ({
       items: state.items
-        .map((item) =>
-          item.productId === productId ? { ...item, quantity: item.quantity - quantity } : item,
-        )
+        .map((item) => (item.SKU === SKU ? { ...item, quantity: item.quantity - quantity } : item))
         .filter(({ quantity }) => quantity > 0),
     })),
   clear: () => set({ items: [] }),

@@ -43,7 +43,7 @@ describe('useBasket store', () => {
       SKU: products[0].SKU,
       productId: products[0].id,
     })
-    act(() => result.current.remove(products[0].id))
+    act(() => result.current.remove(products[0].SKU))
     rerender()
     expect(result.current.items.length).toBe(0)
   })
@@ -57,7 +57,7 @@ describe('useBasket store', () => {
       SKU: products[0].SKU,
       productId: products[0].id,
     })
-    act(() => result.current.increaseQTY(products[0].id))
+    act(() => result.current.increaseQTY(products[0].SKU))
     rerender()
     expect(result.current.items[0].quantity).toBe(2)
   })
@@ -69,10 +69,10 @@ describe('useBasket store', () => {
     act(() => result.current.add(products[2]))
     rerender()
     expect(result.current.items.length).toBe(2)
-    act(() => result.current.increaseQTY(products[0].id))
+    act(() => result.current.increaseQTY(products[0].SKU))
     rerender()
     expect(result.current.items.length).toBe(2)
-    expect(result.current.items.find((item) => item.productId === products[0].id)).toEqual({
+    expect(result.current.items.find((item) => item.SKU === products[0].SKU)).toEqual({
       quantity: 2,
       SKU: products[0].SKU,
       productId: products[0].id,
@@ -89,10 +89,10 @@ describe('useBasket store', () => {
       SKU: products[0].SKU,
       productId: products[0].id,
     })
-    act(() => result.current.increaseQTY(products[0].id, 1))
+    act(() => result.current.increaseQTY(products[0].SKU, 1))
     rerender()
     expect(result.current.items[0].quantity).toBe(2)
-    act(() => result.current.increaseQTY(products[0].id, 10))
+    act(() => result.current.increaseQTY(products[0].SKU, 10))
     rerender()
     expect(result.current.items[0].quantity).toBe(12)
   })
@@ -101,10 +101,10 @@ describe('useBasket store', () => {
     const { result, rerender } = renderHook(() => useBasketStore())
     expect(result.current.items.length).toBe(0)
     act(() => result.current.add(products[0]))
-    act(() => result.current.increaseQTY(products[0].id))
+    act(() => result.current.increaseQTY(products[0].SKU))
     rerender()
     expect(result.current.items[0].quantity).toBe(2)
-    act(() => result.current.decreaseQTY(products[0].id))
+    act(() => result.current.decreaseQTY(products[0].SKU))
     rerender()
     expect(result.current.items[0].quantity).toBe(1)
   })
@@ -114,13 +114,13 @@ describe('useBasket store', () => {
     expect(result.current.items.length).toBe(0)
     act(() => result.current.add(products[0]))
     act(() => result.current.add(products[2]))
-    act(() => result.current.increaseQTY(products[2].id, 10))
+    act(() => result.current.increaseQTY(products[2].SKU, 10))
     rerender()
     expect(result.current.items.length).toBe(2)
-    act(() => result.current.decreaseQTY(products[2].id))
+    act(() => result.current.decreaseQTY(products[2].SKU))
     rerender()
     expect(result.current.items.length).toBe(2)
-    expect(result.current.items.find((item) => item.productId === products[2].id)).toEqual({
+    expect(result.current.items.find((item) => item.SKU === products[2].SKU)).toEqual({
       quantity: 10,
       SKU: products[2].SKU,
       productId: products[2].id,
@@ -138,7 +138,7 @@ describe('useBasket store', () => {
       SKU: products[0].SKU,
     })
 
-    act(() => result.current.decreaseQTY(products[0].id))
+    act(() => result.current.decreaseQTY(products[0].SKU))
     rerender()
     expect(result.current.items.length).toBe(0)
   })
@@ -147,10 +147,10 @@ describe('useBasket store', () => {
     const { result, rerender } = renderHook(() => useBasketStore())
     expect(result.current.items.length).toBe(0)
     act(() => result.current.add(products[0]))
-    act(() => result.current.increaseQTY(products[0].id, 10))
+    act(() => result.current.increaseQTY(products[0].SKU, 10))
     rerender()
     expect(result.current.items[0].quantity).toBe(11)
-    act(() => result.current.decreaseQTY(products[0].id, 10))
+    act(() => result.current.decreaseQTY(products[0].SKU, 10))
     rerender()
     expect(result.current.items[0].quantity).toBe(1)
   })
@@ -160,7 +160,7 @@ describe('useBasket store', () => {
     expect(result.current.items.length).toBe(0)
     act(() => result.current.add(products[0]))
     rerender()
-    act(() => result.current.decreaseQTY(products[2].id, 10))
+    act(() => result.current.decreaseQTY(products[2].SKU, 10))
     rerender()
     expect(result.current.items.length).toBe(1)
     expect(result.current.items[0].quantity).toBe(1)
