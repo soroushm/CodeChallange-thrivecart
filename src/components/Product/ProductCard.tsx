@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import type { Product } from '../../types.ts'
 import Offer from '../../assets/offer-icon.svg'
 import { type CurrencyCode, formatPriceFromCents } from '../../utils/formatPriceFromCents.ts'
+import { useBasketStore } from '../../hooks/useBasketStore.ts'
 
 interface ProductProps {
   product: Product
@@ -14,6 +15,7 @@ export function ProductCard({ product, productCurrency }: ProductProps) {
     () => formatPriceFromCents(product.price, productCurrency),
     [product.price, productCurrency],
   )
+  const { add } = useBasketStore()
   return (
     <article className="product card">
       <div className="product-info">
@@ -34,7 +36,7 @@ export function ProductCard({ product, productCurrency }: ProductProps) {
           </span>
         )}
       </div>
-      <button>Add to cart</button>
+      <button onClick={() => add(product)}>Add to cart</button>
     </article>
   )
 }
