@@ -12,10 +12,13 @@
     "pretty": "pretty-quick --staged",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:ui": "vitest run --coverage && open coverage/lcov-report/index.html",
     "format": "prettier --write ."
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
+    "@vitest/coverage-v8": "^4.0.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "zustand": "^5.0.11"
