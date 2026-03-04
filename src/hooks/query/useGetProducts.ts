@@ -1,6 +1,6 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { api } from '../../config'
-import type { Product } from '../../components/Product/types.ts'
+import type { Product } from '../../types.ts'
 import type { CurrencyCode } from '../../utils/formatPriceFromCents.ts'
 
 interface Data {

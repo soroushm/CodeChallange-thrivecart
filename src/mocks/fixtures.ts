@@ -1,4 +1,6 @@
-export const products = [
+import type { Campaigns, DeliveryMethods, Products } from '../types.ts'
+
+export const products: Products = [
   {
     id: '2c7cc8d8-3b0b-45f3-8df4-4422f91b7c4b',
     SKU: 'R01',
@@ -34,7 +36,7 @@ export const products = [
   },
 ]
 
-export const campaigns = [
+export const campaigns: Campaigns = [
   {
     id: '90fe8efa-12f7-4796-b040-cd370949a1bc',
     code: 'B1G2',
@@ -48,7 +50,7 @@ export const campaigns = [
   },
 ]
 
-export const deliveryMethods = [
+export const deliveryMethods: DeliveryMethods = [
   {
     id: 'debca1c4-8548-4c30-9383-c299cf623b3a',
     code: 1,

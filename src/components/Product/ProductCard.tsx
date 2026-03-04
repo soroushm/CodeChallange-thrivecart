@@ -1,6 +1,6 @@
 import './product.css'
 import { useMemo } from 'react'
-import type { Product } from './types'
+import type { Product } from '../../types.ts'
 import Offer from '../../assets/offer-icon.svg'
 import { type CurrencyCode, formatPriceFromCents } from '../../utils/formatPriceFromCents.ts'
 
